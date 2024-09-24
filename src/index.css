@@ -1,26 +1,50 @@
-/* @font-face {
-  font-family: "Titillium Web";
-  src: url("./fonts/TitilliumWeb-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-} */
-
 * {
   scroll-behavior: smooth;
 }
 
-/* body {
-  font-family: "Titillium Web", sans-serif;
+:root {
+  --main: #101828;
+  --text: #475467;
+  --white: #fff;
+  --inputs: #f7f7f7;
+  --badges: #f2f4f7;
+  --gray: #6c717b;
+  --gray-light: #dadde1;
+  --button: #e44848;
+  --button-hover: #d84343;
+  --rating: #ffc531;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter_28pt-Regular.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter_24pt-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter_28pt-Medium.ttf") format("truetype");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
   letter-spacing: 0.04em;
-  color: #000;
-  background-color: #002a3e;
-  background: url("/img/bgImg.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 95.7vh;
-} */
+  line-height: 1.5;
+}
 
 h1,
 h2,
