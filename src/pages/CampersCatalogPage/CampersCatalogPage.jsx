@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campers/operations";
 import Loader from "../../components/Loader/Loader";
 import Header from "../../components/Header/Header";
+import CampersList from "../../components/CampersList/CampersList";
 
 const CampersCatalogPage = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const CampersCatalogPage = () => {
     <>
       <Header />
       <main>
-        <h1>CampersCatalogPage</h1>;
+        <div style={{ paddingLeft: 64, paddingRight: 64 }}>
+          <CampersList />
+        </div>
       </main>
     </>
   );
