@@ -1,20 +1,56 @@
 .cardContainer {
   display: flex;
+  gap: 24px;
 }
 
-.camperImgBox {
-  border-radius: 10px;
-  width: 292px;
-  height: 320px;
-  overflow: hidden;
+.camperInfo {
+  width: 524px;
+}
+
+.mainInfo {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--main);
+  margin-bottom: 8px;
 }
 
-.camperImgBox .camperImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.stats {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.likeIcon {
+  width: 24px;
+  height: 21px;
+}
+
+.addInfoItem {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.addInfo {
+  display: flex;
+  gap: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--main);
+  margin-bottom: 24px;
+}
+
+.addInfoIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 24px;
 }
