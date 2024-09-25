@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
+import Loader from "./components/Loader/Loader.jsx";
 
 const CamperFeatures = lazy(() =>
   import("./components/CamperFeatures/CamperFeatures.jsx")
@@ -20,15 +21,17 @@ const CampersCatalogPage = lazy(() =>
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/catalog" element={<CampersCatalogPage />} />
-        <Route path="/catalog/:id" element={<CamperDetailsPage />}>
-          <Route path="cast" element={<CamperFeatures />} />
-          <Route path="reviews" element={<CamperReviews />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CampersCatalogPage />} />
+          <Route path="/catalog/:id" element={<CamperDetailsPage />}>
+            <Route path="cast" element={<CamperFeatures />} />
+            <Route path="reviews" element={<CamperReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
