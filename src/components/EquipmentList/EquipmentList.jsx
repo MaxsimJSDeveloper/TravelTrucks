@@ -17,13 +17,13 @@ export const EquipmentList = ({
   return (
     <ul className={css.equipmentList}>
       {transmission && (
-        <EquipmentItem iconId="icon-diagram" text={transmission} />
+        <EquipmentItem iconId="icon-automatic" text={transmission} />
       )}
       {engine && <EquipmentItem iconId="icon-fuel-pump" text={engine} />}
-      {AC && <EquipmentItem iconId="icon-wind" text="AC" />}
-      {kitchen && <EquipmentItem iconId="icon-cup-hot" text="Kitchen" />}
-      {bathroom && <EquipmentItem iconId="icon-bath" text="Bathroom" />}
-      {TV && <EquipmentItem iconId="icon-tv" text="TV" />}
+      {AC && <EquipmentItem iconId="icon-AC" text="AC" />}
+      {kitchen && <EquipmentItem iconId="icon-kitchen" text="Kitchen" />}
+      {bathroom && <EquipmentItem iconId="icon-bathroom" text="Bathroom" />}
+      {TV && <EquipmentItem iconId="icon-TV" text="TV" />}
       {radio && <EquipmentItem iconId="icon-radio" text="Radio" />}
       {/* {refrigerator && (
         <EquipmentItem iconId="icon-fridge" text="Refrigerator" />
