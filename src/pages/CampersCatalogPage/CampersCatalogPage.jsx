@@ -6,6 +6,8 @@ import useCampers from "../../hooks/useCampers";
 import Container from "../../components/Container/Container";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
+import css from "./CampersCatalogPage.module.css";
+
 const CampersCatalogPage = () => {
   const { campers, isLoading, hasMoreCampers, handleLoadMore } = useCampers();
 
@@ -15,9 +17,9 @@ const CampersCatalogPage = () => {
       <main>
         <Container>
           {isLoading && <Loader />}
-          <div style={{ display: "flex" }}>
+          <div className={css.mainWrap}>
             <Sidebar />
-            <div>
+            <div className={css.listWrap}>
               <CampersList campers={campers} />
               {hasMoreCampers && (
                 <LoadMoreBtn onClick={handleLoadMore} isLoading={isLoading} />

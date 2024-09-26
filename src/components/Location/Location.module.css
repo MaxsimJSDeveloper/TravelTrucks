@@ -1,0 +1,39 @@
+.locationContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 45px;
+}
+
+.locationTitle {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--gray);
+}
+
+.inputContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.inputField {
+  border-radius: 12px;
+  padding: 16px 20px;
+  padding-left: 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 360px;
+  height: 56px;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}

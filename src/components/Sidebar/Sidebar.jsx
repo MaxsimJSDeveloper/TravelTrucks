@@ -1,11 +1,15 @@
 import Location from "../Location/Location";
 import VehicleEquipment from "../VehicleEquipment/VehicleEquipment";
 
+import css from "./Sidebar.module.css";
+
 const Sidebar = () => {
   return (
     <>
-      <Location />
-      <VehicleEquipment />
+      <div className={css.sidebarContainer}>
+        <Location />
+        <VehicleEquipment />
+      </div>
     </>
   );
 };

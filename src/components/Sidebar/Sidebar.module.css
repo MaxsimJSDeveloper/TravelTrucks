@@ -1,0 +1,6 @@
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  margin-right: 64px;
+}

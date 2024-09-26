@@ -1,0 +1,10 @@
+.listWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainWrap {
+  display: flex;
+  margin-top: 48px;
+}
