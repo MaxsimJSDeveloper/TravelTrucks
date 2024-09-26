@@ -8,6 +8,7 @@ const Sidebar = () => {
     <>
       <div className={css.sidebarContainer}>
         <Location />
+        <p className={css.title}>Filters</p>
         <VehicleEquipment />
       </div>
     </>
