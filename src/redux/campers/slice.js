@@ -13,6 +13,8 @@ export const handleRejected = (state, action) => {
 const initialState = {
   items: [],
   camper: {},
+  currentPage: 1,
+  total: 0,
   isLoading: false,
   error: null,
 };
@@ -20,6 +22,11 @@ const initialState = {
 const campersSlice = createSlice({
   name: "campers",
   initialState,
+  reducers: {
+    incrementPage(state) {
+      state.currentPage += 1;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampers.rejected, handleRejected)
@@ -27,7 +34,15 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload.items;
+        const newCampers = action.payload.items;
+        const uniqueCampers = newCampers.filter(
+          (c) =>
+            !state.items.some((existingCamper) => existingCamper.id === c.id)
+        );
+
+        state.items = [...state.items, ...uniqueCampers];
+
+        state.total = action.payload.total;
       })
       .addCase(fetchCamperById.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)
@@ -39,4 +54,5 @@ const campersSlice = createSlice({
   },
 });
 
+export const { incrementPage } = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

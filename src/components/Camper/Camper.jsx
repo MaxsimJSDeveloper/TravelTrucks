@@ -2,11 +2,13 @@ import sprite from "../../img/symbol-defs.svg";
 import CamperImg from "../CamperImg/CamperImg";
 
 import { EquipmentList } from "../EquipmentList/EquipmentList";
-import { maxDescriptionLength } from "../js/constans";
-import { truncateText } from "../js/truncateText";
+
+import { truncateText } from "../../js/truncateText";
 import BtnWrap from "../BtnWrap/BtnWrap";
 
 import css from "./Camper.module.css";
+import { useNavigate } from "react-router-dom";
+import { maxDescriptionLength } from "../../js/constans";
 
 const Camper = ({ camper }) => {
   const {
@@ -25,6 +27,7 @@ const Camper = ({ camper }) => {
   } = camper;
 
   const equipmentProps = { transmission, engine, AC, kitchen };
+  const navigate = useNavigate();
 
   return (
     <>

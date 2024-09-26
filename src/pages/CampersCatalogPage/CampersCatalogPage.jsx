@@ -1,29 +1,24 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoading } from "../../redux/campers/selectors";
-import { useEffect } from "react";
-import { fetchCampers } from "../../redux/campers/operations";
 import Loader from "../../components/Loader/Loader";
 import Header from "../../components/Header/Header";
 import CampersList from "../../components/CampersList/CampersList";
+import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+import useCampers from "../../hooks/useCampers";
+import Container from "../../components/Container/Container";
 
 const CampersCatalogPage = () => {
-  const dispatch = useDispatch();
+  const { campers, isLoading, hasMoreCampers, handleLoadMore } = useCampers();
 
-  const isLoading = useSelector(selectIsLoading);
-
-  useEffect(() => {
-    dispatch(fetchCampers());
-  }, [dispatch]);
-
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <>
       <Header />
       <main>
-        <div style={{ paddingLeft: 64, paddingRight: 64 }}>
-          <CampersList />
-        </div>
+        <Container>
+          {isLoading && <Loader />}
+          <CampersList campers={campers} />
+          {hasMoreCampers && (
+            <LoadMoreBtn onClick={handleLoadMore} isLoading={isLoading} />
+          )}
+        </Container>
       </main>
     </>
   );

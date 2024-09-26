@@ -4,6 +4,8 @@ import BtnWrap from "../../components/BtnWrap/BtnWrap";
 import Header from "../../components/Header/Header";
 
 import css from "./HomePage.module.css";
+import HomePageContent from "../../components/HomePageContent/HomePageContent";
+import Container from "../../components/Container/Container";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -12,17 +14,12 @@ const HomePage = () => {
     <>
       <Header />
       <main className={css.homePage}>
-        <div style={{ paddingLeft: 64, paddingRight: 64 }}>
+        <Container>
           <div className={css.homePageContainer}>
-            <div className={css.infoContainer}>
-              <h1 className={css.title}>Campers of your dreams</h1>
-              <p className={css.info}>
-                You can find everything you want in our catalog
-              </p>
-            </div>
+            <HomePageContent />
             <BtnWrap navigate={() => navigate("/catalog")}>View Now</BtnWrap>
           </div>
-        </div>
+        </Container>
       </main>
     </>
   );
