@@ -1,0 +1,52 @@
+.infoContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  width: 96px;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 16px;
+  color: var(--main);
+}
+
+.comment {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.stars {
+  display: flex;
+  width: 96px;
+  height: 16px;
+  gap: 4px;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  background-color: var(--badges);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--button);
+}
+
+.user {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
