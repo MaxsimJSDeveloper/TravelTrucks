@@ -19,7 +19,7 @@
 .activeLink::after {
   content: "";
   position: absolute;
-  bottom: -25px; /* Расстояние от текста до линии */
+  bottom: -25px;
   left: 0;
   right: 0;
   height: 5px;

@@ -28,7 +28,7 @@ const VehicleType = () => {
             text={type}
             className={css.vehicleEquipment}
             iconClassName={css.vehicleAddInfoIcon}
-            onClick={() => handleSelectVehicleType(type)} // Обработчик клика
+            onClick={() => handleSelectVehicleType(type)}
             isSelected={vehicleType === type}
           />
         ))}

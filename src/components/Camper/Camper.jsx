@@ -63,7 +63,7 @@ const Camper = ({ camper }) => {
             {truncateText(description, maxDescriptionLength)}
           </p>
           <EquipmentList {...equipmentProps} />
-          <BtnWrap navigate={() => navigate(`/catalog/:${id}`)}>
+          <BtnWrap type={"button"} onClick={() => navigate(`/catalog/:${id}`)}>
             Show more
           </BtnWrap>
         </div>

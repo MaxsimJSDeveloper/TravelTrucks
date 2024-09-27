@@ -17,7 +17,9 @@ const HomePage = () => {
         <Container>
           <div className={css.homePageContainer}>
             <HomePageContent />
-            <BtnWrap navigate={() => navigate("/catalog")}>View Now</BtnWrap>
+            <BtnWrap type={"button"} onClick={() => navigate("/catalog")}>
+              View Now
+            </BtnWrap>
           </div>
         </Container>
       </main>

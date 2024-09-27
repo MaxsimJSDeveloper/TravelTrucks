@@ -1,17 +1,11 @@
-import PropTypes from "prop-types";
 import css from "./BtnWrap.module.css";
 
-const BtnWrap = ({ navigate, children }) => {
+const BtnWrap = ({ type, onClick, children }) => {
   return (
-    <button type="button" className={css.btnWrap} onClick={navigate}>
+    <button type={type} className={css.btnWrap} onClick={onClick}>
       {children}
     </button>
   );
-};
-
-BtnWrap.propTypes = {
-  navigate: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 export default BtnWrap;

@@ -25,7 +25,9 @@ const Sidebar = () => {
         <VehicleEquipment />
         <VehicleType />
         <div>
-          <BtnWrap navigate={handleSearch}>Search</BtnWrap>
+          <BtnWrap type={"submit"} onClick={handleSearch}>
+            Search
+          </BtnWrap>
         </div>
       </div>
     </>

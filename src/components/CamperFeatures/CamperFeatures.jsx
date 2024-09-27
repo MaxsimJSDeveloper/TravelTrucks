@@ -3,6 +3,8 @@ import css from "./CamperFeatures.module.css";
 import { selectCamper } from "../../redux/campers/selectors";
 import { EquipmentList } from "../EquipmentList/EquipmentList";
 import VehicleDetails from "../VehicleDetails/VehicleDetails";
+import BookingForm from "../BookingForm/BookingForm";
+import BookCamper from "../BookCamper/BookCamper";
 
 const CamperFeatures = () => {
   const { transmission, engine, AC, kitchen, bathroom, TV, radio } =
@@ -18,10 +20,15 @@ const CamperFeatures = () => {
     radio,
   };
   return (
-    <div className={css.card}>
-      <EquipmentList {...equipmentProps} />
-      <VehicleDetails />
-    </div>
+    <>
+      <div className={css.features}>
+        <div className={css.card}>
+          <EquipmentList {...equipmentProps} />
+          <VehicleDetails />
+        </div>
+        <BookCamper />
+      </div>
+    </>
   );
 };
 
