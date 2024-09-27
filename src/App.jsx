@@ -26,7 +26,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CampersCatalogPage />} />
           <Route path="/catalog/:id" element={<CamperDetailsPage />}>
-            <Route path="cast" element={<CamperFeatures />} />
+            <Route path="features" element={<CamperFeatures />} />
             <Route path="reviews" element={<CamperReviews />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />

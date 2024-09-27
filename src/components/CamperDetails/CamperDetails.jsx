@@ -24,7 +24,7 @@ const CamperDetails = ({ camper }) => {
             <svg className={css.addInfoIcon}>
               <use xlinkHref={`${sprite}#${"icon-star-active"}`} />
             </svg>
-            <p style={{ textDecoration: "underline" }}>
+            <p className={css.reviews}>
               {rating}({reviews.length} Reviews)
             </p>
           </div>
