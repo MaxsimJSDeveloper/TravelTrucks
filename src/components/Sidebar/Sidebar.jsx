@@ -5,16 +5,15 @@ import VehicleEquipment from "../VehicleEquipment/VehicleEquipment";
 import VehicleType from "../VehicleType/VehicleType";
 
 import css from "./Sidebar.module.css";
-import { selectFilters } from "../../redux/filters/selectors";
+import { selectFilters, selectLocation } from "../../redux/filters/selectors";
 import { fetchCampers } from "../../redux/campers/operations";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
+  const location = useSelector(selectLocation);
 
   const handleSearch = () => {
-    console.log("Search button clicked");
-    console.log("Current filters:", filters);
     dispatch(fetchCampers(filters));
   };
 

@@ -14,18 +14,21 @@ const CamperImg = ({ gallery, showSingle }) => {
       />
     </div>
   ) : (
-    <div className={css.camperImgBox}>
+    <ul className={css.camperDetailList}>
       {gallery.map((image, index) => (
-        <img
-          key={index}
-          className={css.camperImg}
-          width={292}
-          height={320}
-          src={image.thumb}
-          alt={`Camper ${index + 1}`}
-        />
+        <li key={index} className={css.camperImgItem}>
+          <div className={css.camperImgBox}>
+            <img
+              className={css.camperImg}
+              width={292}
+              height={320}
+              src={image.thumb}
+              alt={`Camper ${index + 1}`}
+            />
+          </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
