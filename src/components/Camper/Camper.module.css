@@ -54,3 +54,8 @@
   color: var(--text);
   margin-bottom: 24px;
 }
+
+.toggleBtn {
+  border: none;
+  background-color: inherit;
+}

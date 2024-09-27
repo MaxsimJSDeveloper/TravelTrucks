@@ -17,6 +17,7 @@ const initialState = {
   total: 0,
   isLoading: false,
   error: null,
+  favorites: JSON.parse(localStorage.getItem("favorites")) || [],
 };
 
 const campersSlice = createSlice({
@@ -25,6 +26,21 @@ const campersSlice = createSlice({
   reducers: {
     incrementPage(state) {
       state.currentPage += 1;
+    },
+    addToFavorites(state, action) {
+      const exists = state.favorites.some(
+        (favorite) => favorite.id === action.payload.id
+      );
+      if (!exists) {
+        state.favorites.push(action.payload);
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      }
+    },
+    removeFromFavorites(state, action) {
+      state.favorites = state.favorites.filter(
+        (favorite) => favorite.id !== action.payload.id
+      );
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
   },
   extraReducers: (builder) => {
@@ -54,5 +70,6 @@ const campersSlice = createSlice({
   },
 });
 
-export const { incrementPage } = campersSlice.actions;
+export const { incrementPage, addToFavorites, removeFromFavorites } =
+  campersSlice.actions;
 export const campersReducer = campersSlice.reducer;
