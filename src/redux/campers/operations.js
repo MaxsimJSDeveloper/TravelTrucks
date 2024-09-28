@@ -15,14 +15,22 @@ export const fetchCampers = createAsyncThunk(
       if (filters.vehicleType) {
         params.append("form", filters.vehicleType);
       }
+
+      // Изменяем обработку оборудования
       if (filters.equipment && filters.equipment.length > 0) {
-        params.append("equipment", filters.equipment.join(","));
+        filters.equipment.forEach((equipment) => {
+          params.append(equipment, "true"); // добавляем каждое оборудование как параметр
+        });
       }
 
-      // Проверяем итоговые параметры перед отправкой
+      params.append("page", filters.page);
+      params.append("limit", filters.limit);
+
       console.log("Final Params:", params.toString());
 
       const response = await axios.get(`/campers?${params.toString()}`);
+
+      console.log(response.data);
 
       return response.data;
     } catch (e) {

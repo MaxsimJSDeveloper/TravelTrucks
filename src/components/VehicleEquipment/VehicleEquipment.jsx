@@ -1,12 +1,19 @@
+import { useState } from "react";
 import EquipmentItem from "../EquipmentItem/EquipmentItem";
 import css from "./VehicleEquipment.module.css";
 
-const VehicleEquipment = ({ setEquipment }) => {
-  // const handleChange = (e, item) => {
-  //   setEquipment((prev) =>
-  //     e.target.checked ? [...prev, item] : prev.filter((i) => i !== item)
-  //   );
-  // };
+const VehicleEquipment = ({ onEquipmentSelect }) => {
+  const [selectedEquipment, setSelectedEquipment] = useState({});
+
+  const handleEquipmentClick = (equipment) => {
+    const newSelection = {
+      ...selectedEquipment,
+      [equipment]: !selectedEquipment[equipment], // Переключаем состояние
+    };
+
+    setSelectedEquipment(newSelection);
+    onEquipmentSelect(newSelection); // Обновляем родительский компонент с новыми фильтрами
+  };
 
   return (
     <div>
@@ -19,6 +26,7 @@ const VehicleEquipment = ({ setEquipment }) => {
             text={item}
             className={css.vehicleEquipment}
             iconClassName={css.vehicleAddInfoIcon}
+            onClick={() => handleEquipmentClick(item)}
           />
         ))}
       </ul>

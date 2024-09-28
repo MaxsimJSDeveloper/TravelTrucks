@@ -32,6 +32,9 @@ const campersSlice = createSlice({
     incrementPage(state) {
       state.currentPage += 1;
     },
+    resetCurrentPage(state) {
+      state.currentPage = 1;
+    },
     resetFilters(state) {
       state.filters = {
         location: "",
@@ -90,5 +93,6 @@ export const {
   removeFromFavorites,
   setFilters,
   resetFilters,
+  resetCurrentPage,
 } = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

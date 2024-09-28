@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-
 import BtnWrap from "../BtnWrap/BtnWrap";
 import Location from "../Location/Location";
 import VehicleEquipment from "../VehicleEquipment/VehicleEquipment";
 import VehicleType from "../VehicleType/VehicleType";
 import css from "./Sidebar.module.css";
-import { setFilters } from "../../redux/campers/slice";
+import { resetCurrentPage, setFilters } from "../../redux/campers/slice";
 import { fetchCampers } from "../../redux/campers/operations";
 
 const Sidebar = () => {
@@ -14,6 +13,7 @@ const Sidebar = () => {
 
   const handleSearch = () => {
     console.log("Current Filters:", filters);
+    dispatch(resetCurrentPage());
     dispatch(fetchCampers(filters));
   };
 
@@ -25,8 +25,12 @@ const Sidebar = () => {
     dispatch(setFilters({ vehicleType }));
   };
 
-  const handleEquipmentChange = (equipment) => {
-    dispatch(setFilters({ equipment }));
+  const handleEquipmentChange = (equipmentSelection) => {
+    const equipmentArray = Object.keys(equipmentSelection).filter(
+      (key) => equipmentSelection[key] // только выбранное оборудование
+    );
+
+    dispatch(setFilters({ equipment: equipmentArray }));
   };
 
   return (
