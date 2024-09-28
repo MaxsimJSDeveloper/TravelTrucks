@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectCampers,
   selectCurrentPage,
+  selectFilters,
   selectIsLoading,
   selectTotal,
 } from "../redux/campers/selectors";
@@ -16,18 +17,21 @@ const useCampers = () => {
   const isLoading = useSelector(selectIsLoading);
   const currentPage = useSelector(selectCurrentPage);
   const total = useSelector(selectTotal);
+  const filters = useSelector(selectFilters);
 
   const limit = 4;
-  const hasMoreCampers = campers.length < total;
+  const hasMoreCampers = campers.length < total && campers.length > 0;
 
   const loadCampers = () => {
     const filter = {
-      page: currentPage,
-      limit,
+      page: currentPage || 1,
+      limit: limit || 4,
+      ...filters,
     };
     dispatch(fetchCampers(filter));
   };
 
+  // Загрузка данных при изменении страницы
   useEffect(() => {
     loadCampers();
   }, [currentPage, dispatch]);

@@ -68,14 +68,18 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const newCampers = action.payload.items;
-        const uniqueCampers = newCampers.filter(
-          (c) =>
-            !state.items.some((existingCamper) => existingCamper.id === c.id)
-        );
 
-        state.items = [...state.items, ...uniqueCampers];
-        state.total = action.payload.total;
+        if (state.currentPage === 1) {
+          state.items = action.payload.items; // Якщо нова сторінка, замінити всі кемпери
+        } else {
+          const uniqueCampers = action.payload.items.filter(
+            (c) =>
+              !state.items.some((existingCamper) => existingCamper.id === c.id)
+          );
+          state.items.push(...uniqueCampers); // Якщо це не перша сторінка, додати нові кемпери
+        }
+
+        state.total = action.payload.total; // Оновити загальну кількість кемперів
       })
       .addCase(fetchCamperById.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)

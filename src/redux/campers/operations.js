@@ -9,22 +9,16 @@ export const fetchCampers = createAsyncThunk(
     try {
       const params = new URLSearchParams();
 
-      if (filters.location) {
-        params.append("location", filters.location);
-      }
-      if (filters.vehicleType) {
-        params.append("form", filters.vehicleType);
-      }
-
-      // Изменяем обработку оборудования
+      if (filters.location) params.append("location", filters.location);
+      if (filters.vehicleType)
+        params.append("vehicleType", filters.vehicleType);
       if (filters.equipment && filters.equipment.length > 0) {
         filters.equipment.forEach((equipment) => {
-          params.append(equipment, "true"); // добавляем каждое оборудование как параметр
+          params.append(`equipment[]`, equipment);
         });
       }
-
-      params.append("page", filters.page);
-      params.append("limit", filters.limit);
+      params.append("page", filters.page || 1);
+      params.append("limit", filters.limit || 4);
 
       console.log("Final Params:", params.toString());
 
