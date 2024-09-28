@@ -18,7 +18,7 @@ const Review = ({ review }) => {
           <span>{initial}</span>
         </div>
         <div className={css.infoContainer}>
-          <p className={css.name}>{reviewer_name}</p>
+          <p>{reviewer_name}</p>
           <ul className={css.stars}>
             {stars.map((filled, index) => (
               <li key={index}>

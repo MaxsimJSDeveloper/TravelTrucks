@@ -9,10 +9,10 @@ const EquipmentList = ({
   bathroom,
   TV,
   radio,
-  //   refrigerator,
-  //   microwave,
-  //   gas,
-  //   water,
+  refrigerator,
+  microwave,
+  gas,
+  water,
 }) => {
   return (
     <ul className={css.equipmentList}>
@@ -25,12 +25,12 @@ const EquipmentList = ({
       {bathroom && <EquipmentItem iconId="icon-bathroom" text="Bathroom" />}
       {TV && <EquipmentItem iconId="icon-TV" text="TV" />}
       {radio && <EquipmentItem iconId="icon-radio" text="Radio" />}
-      {/* {refrigerator && (
-        <EquipmentItem iconId="icon-fridge" text="Refrigerator" />
+      {refrigerator && (
+        <EquipmentItem iconId="icon-refrigerator" text="Refrigerator" />
       )}
       {microwave && <EquipmentItem iconId="icon-microwave" text="Microwave" />}
       {gas && <EquipmentItem iconId="icon-gas" text="Gas" />}
-      {water && <EquipmentItem iconId="icon-water" text="Water" />} */}
+      {water && <EquipmentItem iconId="icon-water" text="Water" />}
     </ul>
   );
 };

@@ -5,12 +5,9 @@
   margin-bottom: 80px;
 }
 
-.container {
-  width: 631px;
-}
-
 .reviewList {
   display: flex;
+  width: 631px;
   flex-direction: column;
   gap: 44px;
 }

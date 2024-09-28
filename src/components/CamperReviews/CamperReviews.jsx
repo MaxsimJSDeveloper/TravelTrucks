@@ -10,15 +10,13 @@ const CamperReviews = () => {
 
   return (
     <div className={css.features}>
-      <div className={css.container}>
-        <ul className={css.reviewList}>
-          {reviews.map((review, index) => (
-            <li key={index}>
-              <Review review={review} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className={css.reviewList}>
+        {reviews.map((review, index) => (
+          <li key={index}>
+            <Review review={review} />
+          </li>
+        ))}
+      </ul>
       <BookCamper />
     </div>
   );

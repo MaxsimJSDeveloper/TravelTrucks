@@ -14,6 +14,10 @@ const CamperFeatures = () => {
     bathroom,
     TV,
     radio,
+    refrigerator,
+    microwave,
+    gas,
+    water,
     form,
     length,
     width,
@@ -30,6 +34,10 @@ const CamperFeatures = () => {
     bathroom,
     TV,
     radio,
+    refrigerator,
+    microwave,
+    gas,
+    water,
   };
 
   const vehicleProps = { form, length, width, height, tank, consumption };
