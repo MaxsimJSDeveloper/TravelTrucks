@@ -4,5 +4,5 @@
   border-bottom: 1px solid var(--badges);
   padding: 24px 64px;
   height: 72px;
-  background: var(--inputs);
+  background-color: var(--inputs);
 }

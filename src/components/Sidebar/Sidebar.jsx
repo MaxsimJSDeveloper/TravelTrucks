@@ -1,29 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef, useCallback } from "react";
 
 import Location from "../Location/Location";
 import VehicleEquipment from "../VehicleEquipment/VehicleEquipment";
 import VehicleType from "../VehicleType/VehicleType";
-import css from "./Sidebar.module.css";
+
 import {
   resetCurrentPage,
   resetFilters,
   setFilters,
 } from "../../redux/campers/slice";
 import { fetchCampers } from "../../redux/campers/operations";
-import { useEffect, useRef } from "react";
 
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import toast from "react-hot-toast";
 
+import css from "./Sidebar.module.css";
+
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const filters = useSelector((state) => state.campers.filters);
-  const currentPage = useSelector((state) => state.campers.currentPage);
+
+  const { filters, currentPage } = useSelector((state) => state.campers);
+
   const limit = 4;
   const previousFilters = useRef(filters);
 
-  const handleSearch = async () => {
-    const filter = { ...filters, page: currentPage || 1, limit: limit || 4 };
+  const handleSearch = useCallback(async () => {
+    const filter = { ...filters, page: currentPage || 1, limit };
 
     dispatch(resetCurrentPage());
 
@@ -33,21 +36,27 @@ const Sidebar = () => {
     } catch (error) {
       toast.error("Failed to fetch campers.");
     }
-  };
+  }, [dispatch, filters, currentPage, limit]);
 
-  const handleLocationChange = (location) => {
-    if (previousFilters.current.location !== location) {
-      dispatch(resetFilters());
-    }
-    dispatch(setFilters({ location }));
-  };
+  const updateFilters = useCallback(
+    (key, value) => {
+      if (previousFilters.current[key] !== value) {
+        dispatch(resetFilters());
+      }
+      dispatch(setFilters({ [key]: value }));
+    },
+    [dispatch]
+  );
 
-  const handleVehicleTypeChange = (vehicleType) => {
-    if (previousFilters.current.vehicleType !== vehicleType) {
-      dispatch(resetFilters());
-    }
-    dispatch(setFilters({ vehicleType }));
-  };
+  const handleLocationChange = useCallback(
+    (location) => updateFilters("location", location),
+    [updateFilters]
+  );
+
+  const handleVehicleTypeChange = useCallback(
+    (vehicleType) => updateFilters("vehicleType", vehicleType),
+    [updateFilters]
+  );
 
   useEffect(() => {
     previousFilters.current = filters;

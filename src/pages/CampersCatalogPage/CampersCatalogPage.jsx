@@ -1,11 +1,11 @@
 import Loader from "../../components/Loader/Loader";
 import CampersList from "../../components/CampersList/CampersList";
-import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import useCampers from "../../hooks/useCampers";
 import Container from "../../shared/Container/Container";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
 import css from "./CampersCatalogPage.module.css";
+import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 
 const CampersCatalogPage = () => {
   const { campers, isLoading, hasMoreCampers, handleLoadMore } = useCampers();
@@ -19,7 +19,13 @@ const CampersCatalogPage = () => {
           <div className={css.listWrap}>
             <CampersList campers={campers} />
             {hasMoreCampers && (
-              <LoadMoreBtn onClick={handleLoadMore} isLoading={isLoading} />
+              <BtnWrap
+                onClick={handleLoadMore}
+                disabled={isLoading}
+                className={css.loadMoreBtn}
+              >
+                {isLoading ? "Loading..." : "Load More"}
+              </BtnWrap>
             )}
           </div>
         </div>

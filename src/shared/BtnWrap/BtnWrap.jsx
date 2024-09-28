@@ -1,8 +1,19 @@
 import css from "./BtnWrap.module.css";
 
-const BtnWrap = ({ type, onClick, children }) => {
+const BtnWrap = ({
+  type = "button",
+  onClick,
+  children,
+  disabled,
+  className,
+}) => {
   return (
-    <button type={type} className={css.btnWrap} onClick={onClick}>
+    <button
+      type={type}
+      className={`${css.btnWrap} ${className}`} // Слияние классов
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

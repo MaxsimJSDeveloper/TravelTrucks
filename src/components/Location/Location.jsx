@@ -1,15 +1,16 @@
-import { Toaster, toast } from "react-hot-toast";
-import sprite from "../../img/symbol-defs.svg";
-import css from "./Location.module.css";
+import { toast } from "react-hot-toast";
 import { Field, Form, Formik, ErrorMessage } from "formik";
+
+import sprite from "../../img/symbol-defs.svg";
 import { LocationSchema } from "../../js/validation";
+
+import css from "./Location.module.css";
 
 const Location = ({ onLocationChange }) => {
   return (
     <>
       <div className={css.locationContainer}>
         <p className={css.locationTitle}>Location</p>
-        <Toaster />
         <Formik
           initialValues={{ location: "Ukraine, Lviv" }}
           validationSchema={LocationSchema}

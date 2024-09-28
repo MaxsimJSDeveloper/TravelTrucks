@@ -5,7 +5,6 @@ import css from "./CamperDetails.module.css";
 
 const CamperDetails = ({ camper }) => {
   const {
-    id,
     name,
     price,
     rating,
