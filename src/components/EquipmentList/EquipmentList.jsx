@@ -1,7 +1,7 @@
 import EquipmentItem from "../EquipmentItem/EquipmentItem";
 import css from "./EquipmentList.module.css";
 
-export const EquipmentList = ({
+const EquipmentList = ({
   transmission,
   engine,
   AC,
@@ -34,3 +34,5 @@ export const EquipmentList = ({
     </ul>
   );
 };
+
+export default EquipmentList;

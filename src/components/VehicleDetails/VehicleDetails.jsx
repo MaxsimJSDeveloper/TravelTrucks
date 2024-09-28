@@ -1,12 +1,6 @@
-import { useSelector } from "react-redux";
-import { selectCamper } from "../../redux/campers/selectors";
-
 import css from "./VehicleDetails.module.css";
 
-const VehicleDetails = () => {
-  const { form, length, width, height, tank, consumption } =
-    useSelector(selectCamper);
-
+const VehicleDetails = ({ form, length, width, height, tank, consumption }) => {
   return (
     <>
       <p className={css.title}>Vehicle details</p>

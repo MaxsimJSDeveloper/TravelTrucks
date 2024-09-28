@@ -1,13 +1,11 @@
-import { useId } from "react";
 import { BookingSchema } from "../../js/validation";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import BtnWrap from "../BtnWrap/BtnWrap";
+import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import { Toaster, toast } from "react-hot-toast";
+
 import css from "./BookingForm.module.css";
 
 const BookingForm = () => {
-  const id = useId();
-
   return (
     <>
       <Toaster />
@@ -25,7 +23,6 @@ const BookingForm = () => {
             type="text"
             name="name"
             placeholder="Name*"
-            id={`${id}-n`}
             className={css.inputField}
           />
           <div className={css.wrap}>
@@ -39,7 +36,6 @@ const BookingForm = () => {
             type="text"
             name="email"
             placeholder="Email*"
-            id={`${id}-p`}
             className={css.inputField}
           />
           <div className={css.wrap}>
@@ -54,7 +50,6 @@ const BookingForm = () => {
             type="date"
             name="bookingDate"
             placeholder="Booking date*"
-            id={`${id}-p`}
             className={css.inputField}
           />
           <div className={css.wrap}>
@@ -69,10 +64,8 @@ const BookingForm = () => {
             as="textarea"
             name="comment"
             placeholder="Comment"
-            id={`${id}-comment`}
             className={`${css.inputField} ${css.textAreaField}`}
           />
-
           <div className={css.wrap}>
             <ErrorMessage
               name="comment"

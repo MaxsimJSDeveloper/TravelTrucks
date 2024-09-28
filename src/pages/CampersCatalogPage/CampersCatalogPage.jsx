@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import CampersList from "../../components/CampersList/CampersList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import useCampers from "../../hooks/useCampers";
-import Container from "../../components/Container/Container";
+import Container from "../../shared/Container/Container";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
 import css from "./CampersCatalogPage.module.css";

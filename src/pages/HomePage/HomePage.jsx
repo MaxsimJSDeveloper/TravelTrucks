@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-import BtnWrap from "../../components/BtnWrap/BtnWrap";
+import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import Header from "../../components/Header/Header";
 
 import css from "./HomePage.module.css";
 import HomePageContent from "../../components/HomePageContent/HomePageContent";
-import Container from "../../components/Container/Container";
+import Container from "../../shared/Container/Container";
 
 const HomePage = () => {
   const navigate = useNavigate();

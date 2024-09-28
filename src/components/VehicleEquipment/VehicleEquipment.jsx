@@ -27,7 +27,7 @@ const VehicleEquipment = () => {
           <EquipmentItem
             key={item}
             iconId={`icon-${item}`}
-            text={item === "transmission" ? "Automatic" : item} // Изменение текста здесь
+            text={item === "transmission" ? "Automatic" : item}
             className={`${css.vehicleEquipment} ${
               selectedEquipment[item] ? css.selected : ""
             }`}

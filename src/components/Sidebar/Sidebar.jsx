@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import BtnWrap from "../BtnWrap/BtnWrap";
+
 import Location from "../Location/Location";
 import VehicleEquipment from "../VehicleEquipment/VehicleEquipment";
 import VehicleType from "../VehicleType/VehicleType";
@@ -11,6 +11,7 @@ import {
 } from "../../redux/campers/slice";
 import { fetchCampers } from "../../redux/campers/operations";
 import { useEffect, useRef } from "react";
+import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 
 const Sidebar = () => {
   const dispatch = useDispatch();

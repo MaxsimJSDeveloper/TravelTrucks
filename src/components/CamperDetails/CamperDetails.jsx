@@ -39,6 +39,7 @@ const CamperDetails = ({ camper }) => {
           <p>&euro;{price}.00</p>
         </div>
       </div>
+
       <CamperImg gallery={gallery || []} showSingle={false} />
 
       <p className={css.description}>{description}</p>
