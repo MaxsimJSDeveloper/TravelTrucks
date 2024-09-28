@@ -1,5 +1,4 @@
 import Loader from "../../components/Loader/Loader";
-import Header from "../../components/Header/Header";
 import CampersList from "../../components/CampersList/CampersList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import useCampers from "../../hooks/useCampers";
@@ -12,23 +11,20 @@ const CampersCatalogPage = () => {
   const { campers, isLoading, hasMoreCampers, handleLoadMore } = useCampers();
 
   return (
-    <>
-      <Header />
-      <main>
-        <Container>
-          {isLoading && <Loader />}
-          <div className={css.mainWrap}>
-            <Sidebar />
-            <div className={css.listWrap}>
-              <CampersList campers={campers} />
-              {hasMoreCampers && (
-                <LoadMoreBtn onClick={handleLoadMore} isLoading={isLoading} />
-              )}
-            </div>
+    <main>
+      <Container>
+        {isLoading && <Loader />}
+        <div className={css.mainWrap}>
+          <Sidebar />
+          <div className={css.listWrap}>
+            <CampersList campers={campers} />
+            {hasMoreCampers && (
+              <LoadMoreBtn onClick={handleLoadMore} isLoading={isLoading} />
+            )}
           </div>
-        </Container>
-      </main>
-    </>
+        </div>
+      </Container>
+    </main>
   );
 };
 

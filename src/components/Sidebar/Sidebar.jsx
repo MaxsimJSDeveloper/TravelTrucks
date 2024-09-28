@@ -11,7 +11,9 @@ import {
 } from "../../redux/campers/slice";
 import { fetchCampers } from "../../redux/campers/operations";
 import { useEffect, useRef } from "react";
+
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -20,12 +22,17 @@ const Sidebar = () => {
   const limit = 4;
   const previousFilters = useRef(filters);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     const filter = { ...filters, page: currentPage || 1, limit: limit || 4 };
 
     dispatch(resetCurrentPage());
 
-    dispatch(fetchCampers(filter));
+    try {
+      await dispatch(fetchCampers(filter));
+      toast.success("Campers fetched successfully!");
+    } catch (error) {
+      toast.error("Failed to fetch campers.");
+    }
   };
 
   const handleLocationChange = (location) => {

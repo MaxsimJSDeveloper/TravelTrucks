@@ -1,14 +1,13 @@
 import { BookingSchema } from "../../js/validation";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import css from "./BookingForm.module.css";
 
 const BookingForm = () => {
   return (
     <>
-      <Toaster />
       <Formik
         initialValues={{ name: "", email: "", bookingDate: "", comment: "" }}
         validationSchema={BookingSchema}

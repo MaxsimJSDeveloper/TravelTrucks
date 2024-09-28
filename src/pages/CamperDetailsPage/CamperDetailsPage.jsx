@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import Header from "../../components/Header/Header";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCamperById } from "../../redux/campers/operations";
@@ -18,15 +17,12 @@ const CamperDetailsPage = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Header />
-      <main>
-        <Container>
-          <CamperDetails camper={camper} />
-          <DetailsNavList />
-        </Container>
-      </main>
-    </>
+    <main>
+      <Container>
+        <CamperDetails camper={camper} />
+        <DetailsNavList />
+      </Container>
+    </main>
   );
 };
 
