@@ -7,10 +7,17 @@ export const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
   async (filters, thunkAPI) => {
     try {
+      const params = new URLSearchParams();
+
       if (filters.location) {
-        filters.location = encodeURIComponent(filters.location);
+        params.append("location", encodeURIComponent(filters.location));
       }
-      const params = new URLSearchParams(filters);
+      if (filters.vehicleType) {
+        params.append("form", filters.vehicleType);
+      }
+      if (filters.equipment && filters.equipment.length > 0) {
+        params.append("equipment", filters.equipment.join(",")); // Преобразуем массив в строку
+      }
 
       const response = await axios.get(`/campers?${params}`);
 

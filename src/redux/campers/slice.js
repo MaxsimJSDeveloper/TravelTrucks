@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCamperById, fetchCampers } from "./operations";
+import { fetchCampers, fetchCamperById } from "./operations";
 
 export const handlePending = (state) => {
   state.isLoading = true;
@@ -18,6 +18,11 @@ const initialState = {
   isLoading: false,
   error: null,
   favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+  filters: {
+    location: "",
+    vehicleType: "",
+    equipment: [],
+  },
 };
 
 const campersSlice = createSlice({
@@ -26,6 +31,16 @@ const campersSlice = createSlice({
   reducers: {
     incrementPage(state) {
       state.currentPage += 1;
+    },
+    resetFilters(state) {
+      state.filters = {
+        location: "",
+        vehicleType: "",
+        equipment: [],
+      };
+    },
+    setFilters(state, action) {
+      state.filters = { ...state.filters, ...action.payload };
     },
     addToFavorites(state, action) {
       const exists = state.favorites.some(
@@ -57,7 +72,6 @@ const campersSlice = createSlice({
         );
 
         state.items = [...state.items, ...uniqueCampers];
-
         state.total = action.payload.total;
       })
       .addCase(fetchCamperById.rejected, handleRejected)
@@ -70,6 +84,11 @@ const campersSlice = createSlice({
   },
 });
 
-export const { incrementPage, addToFavorites, removeFromFavorites } =
-  campersSlice.actions;
+export const {
+  incrementPage,
+  addToFavorites,
+  removeFromFavorites,
+  setFilters,
+  resetFilters,
+} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

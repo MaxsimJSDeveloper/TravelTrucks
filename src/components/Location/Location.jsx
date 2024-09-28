@@ -1,14 +1,9 @@
-import { useDispatch } from "react-redux";
-import { setLocation } from "../../redux/filters/slice";
-
 import sprite from "../../img/symbol-defs.svg";
 import css from "./Location.module.css";
 
-const Location = () => {
-  const dispatch = useDispatch();
-
+const Location = ({ onLocationChange }) => {
   const handleLocationChange = (e) => {
-    dispatch(setLocation(e.target.value));
+    onLocationChange(e.target.value);
   };
 
   return (
