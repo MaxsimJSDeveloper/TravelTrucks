@@ -11,20 +11,26 @@ export const fetchCampers = createAsyncThunk(
 
       if (filters.location) params.append("location", filters.location);
       if (filters.vehicleType) params.append("form", filters.vehicleType);
-      if (filters.equipment && filters.equipment.length > 0) {
-        filters.equipment.forEach((equipment) => {
-          params.append(`equipment[]`, equipment);
-        });
+
+      // Додаємо фільтри, включаючи transmission
+      if (filters.transmission) {
+        params.append(
+          "transmission",
+          filters.transmission === "automatic" ? "manual" : "automatic"
+        );
       }
+
+      // Додаємо інші фільтри
+      Object.entries(filters).forEach(([key, value]) => {
+        if (key !== "transmission" && value === true) {
+          params.append(key, "true");
+        }
+      });
+
       params.append("page", filters.page || 1);
       params.append("limit", filters.limit || 4);
 
-      console.log("Final Params:", params.toString());
-
       const response = await axios.get(`/campers?${params.toString()}`);
-
-      console.log(response.data);
-
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

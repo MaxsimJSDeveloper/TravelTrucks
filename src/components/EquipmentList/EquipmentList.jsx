@@ -17,7 +17,7 @@ export const EquipmentList = ({
   return (
     <ul className={css.equipmentList}>
       {transmission && (
-        <EquipmentItem iconId="icon-automatic" text={transmission} />
+        <EquipmentItem iconId="icon-transmission" text={transmission} />
       )}
       {engine && <EquipmentItem iconId="icon-fuel-pump" text={engine} />}
       {AC && <EquipmentItem iconId="icon-AC" text="AC" />}

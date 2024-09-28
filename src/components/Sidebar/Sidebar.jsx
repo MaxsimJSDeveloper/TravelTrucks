@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   const handleLocationChange = (location) => {
     if (previousFilters.current.location !== location) {
-      dispatch(resetFilters()); // Сброс фильтров, если они изменились
+      dispatch(resetFilters());
     }
     dispatch(setFilters({ location }));
   };
@@ -41,20 +41,6 @@ const Sidebar = () => {
     dispatch(setFilters({ vehicleType }));
   };
 
-  const handleEquipmentChange = (equipmentSelection) => {
-    const equipmentArray = Object.keys(equipmentSelection).filter(
-      (key) => equipmentSelection[key]
-    );
-    if (
-      JSON.stringify(previousFilters.current.equipment) !==
-      JSON.stringify(equipmentArray)
-    ) {
-      dispatch(resetFilters());
-    }
-    dispatch(setFilters({ equipment: equipmentArray }));
-  };
-
-  // Обновляем предыдущие фильтры
   useEffect(() => {
     previousFilters.current = filters;
   }, [filters]);
@@ -63,7 +49,7 @@ const Sidebar = () => {
     <div className={css.sidebarContainer}>
       <Location onLocationChange={handleLocationChange} />
       <p className={css.title}>Filters</p>
-      <VehicleEquipment onEquipmentSelect={handleEquipmentChange} />
+      <VehicleEquipment />
       <VehicleType onTypeSelect={handleVehicleTypeChange} />
       <div>
         <BtnWrap type="button" onClick={handleSearch}>

@@ -11,6 +11,7 @@ const CamperReviews = lazy(() =>
   import("./components/CamperReviews/CamperReviews.jsx")
 );
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
+
 const CamperDetailsPage = lazy(() =>
   import("./pages/CamperDetailsPage/CamperDetailsPage.jsx")
 );

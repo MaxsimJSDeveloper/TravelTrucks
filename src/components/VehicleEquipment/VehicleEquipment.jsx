@@ -1,30 +1,36 @@
 import { useState } from "react";
 import EquipmentItem from "../EquipmentItem/EquipmentItem";
 import css from "./VehicleEquipment.module.css";
+import { useDispatch } from "react-redux";
+import { setFilters } from "../../redux/campers/slice";
 
-const VehicleEquipment = ({ onEquipmentSelect }) => {
+const VehicleEquipment = () => {
+  const dispatch = useDispatch();
   const [selectedEquipment, setSelectedEquipment] = useState({});
 
   const handleEquipmentClick = (equipment) => {
-    const newSelection = {
+    const newSelected = {
       ...selectedEquipment,
-      [equipment]: !selectedEquipment[equipment], // Переключаем состояние
+      [equipment]: !selectedEquipment[equipment],
     };
 
-    setSelectedEquipment(newSelection);
-    onEquipmentSelect(newSelection); // Обновляем родительский компонент с новыми фильтрами
+    setSelectedEquipment(newSelected);
+
+    dispatch(setFilters(newSelected));
   };
 
   return (
     <div>
       <p className={css.vehicleEquipmentTitle}>Vehicle equipment</p>
       <ul className={css.vehicleEquipmentList}>
-        {["AC", "automatic", "kitchen", "TV", "bathroom"].map((item) => (
+        {["AC", "transmission", "kitchen", "TV", "bathroom"].map((item) => (
           <EquipmentItem
             key={item}
             iconId={`icon-${item}`}
-            text={item}
-            className={css.vehicleEquipment}
+            text={item === "transmission" ? "Automatic" : item} // Изменение текста здесь
+            className={`${css.vehicleEquipment} ${
+              selectedEquipment[item] ? css.selected : ""
+            }`}
             iconClassName={css.vehicleAddInfoIcon}
             onClick={() => handleEquipmentClick(item)}
           />

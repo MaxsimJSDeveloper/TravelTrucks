@@ -21,7 +21,6 @@ const initialState = {
   filters: {
     location: "",
     vehicleType: "",
-    equipment: [],
   },
 };
 
@@ -39,12 +38,18 @@ const campersSlice = createSlice({
       state.filters = {
         location: "",
         vehicleType: "",
-        equipment: [],
       };
     },
     setFilters(state, action) {
-      state.filters = { ...state.filters, ...action.payload };
+      const { location, vehicleType, ...equipmentFilters } = action.payload;
+      state.filters = {
+        ...state.filters,
+        location,
+        vehicleType,
+        ...equipmentFilters,
+      };
     },
+
     addToFavorites(state, action) {
       const exists = state.favorites.some(
         (favorite) => favorite.id === action.payload.id
@@ -70,16 +75,16 @@ const campersSlice = createSlice({
         state.error = null;
 
         if (state.currentPage === 1) {
-          state.items = action.payload.items; // Якщо нова сторінка, замінити всі кемпери
+          state.items = action.payload.items;
         } else {
           const uniqueCampers = action.payload.items.filter(
             (c) =>
               !state.items.some((existingCamper) => existingCamper.id === c.id)
           );
-          state.items.push(...uniqueCampers); // Якщо це не перша сторінка, додати нові кемпери
+          state.items.push(...uniqueCampers);
         }
 
-        state.total = action.payload.total; // Оновити загальну кількість кемперів
+        state.total = action.payload.total;
       })
       .addCase(fetchCamperById.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)
