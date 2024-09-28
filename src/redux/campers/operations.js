@@ -10,8 +10,7 @@ export const fetchCampers = createAsyncThunk(
       const params = new URLSearchParams();
 
       if (filters.location) params.append("location", filters.location);
-      if (filters.vehicleType)
-        params.append("vehicleType", filters.vehicleType);
+      if (filters.vehicleType) params.append("form", filters.vehicleType);
       if (filters.equipment && filters.equipment.length > 0) {
         filters.equipment.forEach((equipment) => {
           params.append(`equipment[]`, equipment);

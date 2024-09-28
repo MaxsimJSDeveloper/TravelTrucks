@@ -21,6 +21,7 @@ const Sidebar = () => {
 
   const handleSearch = () => {
     const filter = { ...filters, page: currentPage || 1, limit: limit || 4 };
+
     dispatch(resetCurrentPage());
 
     dispatch(fetchCampers(filter));
