@@ -6,23 +6,21 @@ const VehicleType = ({ onTypeSelect }) => {
   const [selectedType, setSelectedType] = useState("");
 
   const handleTypeClick = (type) => {
-    // Преобразуем тип в нужное значение
     let transformedType;
     if (type === "fully-integrated") {
       transformedType = "fullyIntegrated";
     } else if (type === "van") {
       transformedType = "panelTruck";
     } else {
-      transformedType = type; // для "alcove"
+      transformedType = type;
     }
 
-    // Если тип уже выбран, сбрасываем выбор
     if (selectedType === transformedType) {
-      setSelectedType(""); // Сбрасываем выбранный тип
-      onTypeSelect(""); // Вызываем колбэк с пустым значением
+      setSelectedType("");
+      onTypeSelect("");
     } else {
       setSelectedType(transformedType);
-      onTypeSelect(transformedType); // Вызываем колбэк с выбранным типом
+      onTypeSelect(transformedType);
     }
   };
 
@@ -31,7 +29,6 @@ const VehicleType = ({ onTypeSelect }) => {
       <p className={css.vehicleEquipmentTitle}>Vehicle type</p>
       <ul className={css.vehicleEquipmentList}>
         {["alcove", "fully-integrated", "van"].map((type) => {
-          // Преобразуем type для сравнения
           const displayType =
             type === "van"
               ? "panelTruck"
@@ -45,12 +42,12 @@ const VehicleType = ({ onTypeSelect }) => {
               iconId={`icon-${type}`}
               text={type
                 .replace("-", " ")
-                .replace(/\b\w/g, (c) => c.toUpperCase())} // Форматирование текста
+                .replace(/\b\w/g, (c) => c.toUpperCase())}
               className={`${css.vehicleEquipment} ${
                 selectedType === displayType ? css.selected : ""
-              }`} // Условное добавление класса
+              }`}
               iconClassName={css.vehicleAddInfoIcon}
-              onClick={() => handleTypeClick(type)} // Обработчик клика
+              onClick={() => handleTypeClick(type)}
             />
           );
         })}

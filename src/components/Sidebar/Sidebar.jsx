@@ -13,6 +13,7 @@ const Sidebar = () => {
   const filters = useSelector((state) => state.campers.filters);
 
   const handleSearch = () => {
+    console.log("Current Filters:", filters);
     dispatch(fetchCampers(filters));
   };
 

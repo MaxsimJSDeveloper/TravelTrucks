@@ -15,7 +15,6 @@
 
 .inputContainer {
   position: relative;
-  display: inline-block;
 }
 
 .inputField {
@@ -32,8 +31,18 @@
 .icon {
   position: absolute;
   left: 10px;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
+}
+
+.wrap {
+  height: 14px;
+  display: flex;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 8px;
 }

@@ -10,16 +10,19 @@ export const fetchCampers = createAsyncThunk(
       const params = new URLSearchParams();
 
       if (filters.location) {
-        params.append("location", encodeURIComponent(filters.location));
+        params.append("location", filters.location);
       }
       if (filters.vehicleType) {
         params.append("form", filters.vehicleType);
       }
       if (filters.equipment && filters.equipment.length > 0) {
-        params.append("equipment", filters.equipment.join(",")); // Преобразуем массив в строку
+        params.append("equipment", filters.equipment.join(","));
       }
 
-      const response = await axios.get(`/campers?${params}`);
+      // Проверяем итоговые параметры перед отправкой
+      console.log("Final Params:", params.toString());
+
+      const response = await axios.get(`/campers?${params.toString()}`);
 
       return response.data;
     } catch (e) {

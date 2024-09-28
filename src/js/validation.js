@@ -9,3 +9,10 @@ export const BookingSchema = Yup.object().shape({
   bookingDate: Yup.date().typeError("Invalid date format").required("Required"),
   comment: Yup.string().min(10, "Too Short!").max(50, "Too Long!"),
 });
+
+export const LocationSchema = Yup.object().shape({
+  location: Yup.string().matches(
+    /^[A-Za-z\s]+,\s*[A-Za-z\s]+$/,
+    "Location must be in the format 'Country, City'"
+  ),
+});
