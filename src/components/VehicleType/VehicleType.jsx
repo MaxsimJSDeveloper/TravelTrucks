@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import EquipmentItem from "../EquipmentItem/EquipmentItem";
-import css from "./VehicleType.module.css";
+import css from "../../css/filtersCardsStyles.module.css";
 
 const VehicleType = ({ onTypeSelect, currentFilters }) => {
   const [selectedType, setSelectedType] = useState(

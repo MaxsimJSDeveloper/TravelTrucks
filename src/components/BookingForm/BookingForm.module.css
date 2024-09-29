@@ -16,16 +16,6 @@
   background-color: var(--inputs);
 }
 
-.wrap {
-  height: 14px;
-  display: flex;
-}
-
-.errorMessage {
-  color: red;
-  font-size: 8px;
-}
-
 .textAreaField {
   height: 118px;
   margin-bottom: 10px;

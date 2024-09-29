@@ -1,15 +1,16 @@
 import { useSelector } from "react-redux";
 import { selectCamper } from "../../redux/campers/selectors";
+
 import Review from "../Review/Review";
+import CamperDetailsWrapper from "../../shared/CamperDetailsWrapper/CamperDetailsWrapper";
 
 import css from "./CamperReviews.module.css";
-import BookCamper from "../BookCamper/BookCamper";
 
 const CamperReviews = () => {
   const { reviews = [] } = useSelector(selectCamper);
 
   return (
-    <div className={css.features}>
+    <CamperDetailsWrapper>
       <ul className={css.reviewList}>
         {reviews.map((review, index) => (
           <li key={index}>
@@ -17,8 +18,7 @@ const CamperReviews = () => {
           </li>
         ))}
       </ul>
-      <BookCamper />
-    </div>
+    </CamperDetailsWrapper>
   );
 };
 export default CamperReviews;

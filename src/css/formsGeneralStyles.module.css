@@ -1,0 +1,9 @@
+.wrap {
+  height: 14px;
+  display: flex;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 8px;
+}

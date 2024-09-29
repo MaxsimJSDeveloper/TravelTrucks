@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
-import css from "./CamperFeatures.module.css";
 import { selectCamper } from "../../redux/campers/selectors";
+
 import VehicleDetails from "../VehicleDetails/VehicleDetails";
-import BookCamper from "../BookCamper/BookCamper";
 import EquipmentList from "../EquipmentList/EquipmentList";
+import CamperDetailsWrapper from "../../shared/CamperDetailsWrapper/CamperDetailsWrapper";
+
+import css from "./CamperFeatures.module.css";
 
 const CamperFeatures = () => {
   const {
@@ -44,13 +46,12 @@ const CamperFeatures = () => {
 
   return (
     <>
-      <div className={css.features}>
+      <CamperDetailsWrapper>
         <div className={css.card}>
           <EquipmentList {...equipmentProps} />
           <VehicleDetails {...vehicleProps} />
         </div>
-        <BookCamper />
-      </div>
+      </CamperDetailsWrapper>
     </>
   );
 };

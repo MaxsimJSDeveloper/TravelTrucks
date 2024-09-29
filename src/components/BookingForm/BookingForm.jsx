@@ -3,6 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import { toast } from "react-hot-toast";
 
+import styles from "../../css/formsGeneralStyles.module.css";
 import css from "./BookingForm.module.css";
 
 const BookingForm = () => {
@@ -24,11 +25,11 @@ const BookingForm = () => {
             placeholder="Name*"
             className={css.inputField}
           />
-          <div className={css.wrap}>
+          <div className={styles.wrap}>
             <ErrorMessage
               name="name"
               component="span"
-              className={css.errorMessage}
+              className={styles.errorMessage}
             />
           </div>
           <Field
@@ -37,11 +38,11 @@ const BookingForm = () => {
             placeholder="Email*"
             className={css.inputField}
           />
-          <div className={css.wrap}>
+          <div className={styles.wrap}>
             <ErrorMessage
               name="email"
               component="span"
-              className={css.errorMessage}
+              className={styles.errorMessage}
             />
           </div>
 
@@ -51,11 +52,11 @@ const BookingForm = () => {
             placeholder="Booking date*"
             className={css.inputField}
           />
-          <div className={css.wrap}>
+          <div className={styles.wrap}>
             <ErrorMessage
               name="bookingDate"
               component="span"
-              className={css.errorMessage}
+              className={styles.errorMessage}
             />
           </div>
 
@@ -65,11 +66,11 @@ const BookingForm = () => {
             placeholder="Comment"
             className={`${css.inputField} ${css.textAreaField}`}
           />
-          <div className={css.wrap}>
+          <div className={styles.wrap}>
             <ErrorMessage
               name="comment"
               component="span"
-              className={css.errorMessage}
+              className={styles.errorMessage}
             />
           </div>
           <div>

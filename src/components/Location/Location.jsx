@@ -4,6 +4,7 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import sprite from "../../img/symbol-defs.svg";
 import { LocationSchema } from "../../js/validation";
 
+import styles from "../../css/formsGeneralStyles.module.css";
 import css from "./Location.module.css";
 
 const Location = ({ onLocationChange }) => {
@@ -31,11 +32,11 @@ const Location = ({ onLocationChange }) => {
               <svg className={css.icon}>
                 <use xlinkHref={`${sprite}#icon-map`} />
               </svg>
-              <div className={css.wrap}>
+              <div className={styles.wrap}>
                 <ErrorMessage
                   name="location"
                   component="span"
-                  className={css.errorMessage}
+                  className={styles.errorMessage}
                 />
               </div>
             </Form>
