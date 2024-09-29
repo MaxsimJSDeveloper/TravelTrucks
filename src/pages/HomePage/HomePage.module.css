@@ -1,9 +1,15 @@
 .homePage {
-  background: url("../../img/camper.webp");
+  background-image: url("../../img/camper.webp");
   background-color: rgba(0, 0, 0, 0.2);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .homePage {
+    background-image: url("../../img/camper2x.webp");
+  }
 }
 
 .homePageContainer {

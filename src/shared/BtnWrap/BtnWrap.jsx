@@ -10,7 +10,7 @@ const BtnWrap = ({
   return (
     <button
       type={type}
-      className={`${css.btnWrap} ${className}`} // Слияние классов
+      className={`${css.btnWrap} ${className}`}
       onClick={onClick}
       disabled={disabled}
     >
