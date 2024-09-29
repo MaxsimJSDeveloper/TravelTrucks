@@ -31,7 +31,6 @@ const useCampers = () => {
     dispatch(fetchCampers(filter));
   };
 
-  // Загрузка данных при изменении страницы
   useEffect(() => {
     loadCampers();
   }, [currentPage, dispatch]);

@@ -10,12 +10,18 @@ const VehicleEquipment = ({ currentEquipment, onUpdateFilters }) => {
   }, [currentEquipment]);
 
   const handleEquipmentClick = (equipment) => {
+    let newValue;
+
+    if (equipment === "transmission") {
+      newValue =
+        selectedEquipment[equipment] === "automatic" ? "" : "automatic";
+    } else {
+      newValue = !selectedEquipment[equipment];
+    }
+
     const newSelected = {
       ...selectedEquipment,
-      [equipment]:
-        equipment === "transmission"
-          ? "automatic"
-          : !selectedEquipment[equipment],
+      [equipment]: newValue,
     };
 
     setSelectedEquipment(newSelected);
