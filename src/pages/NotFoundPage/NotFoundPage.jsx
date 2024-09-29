@@ -8,13 +8,13 @@ const NotFoundPage = () => {
         <title>404 Not Found</title>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <main className={styles.notFound}>
+      <div className={styles.notFound}>
         <h1 className={styles.title}>404</h1>
         <p className={styles.message}>Page not found</p>
         <a className={styles.link} href="/">
           Go to Home
         </a>
-      </main>
+      </div>
     </>
   );
 };

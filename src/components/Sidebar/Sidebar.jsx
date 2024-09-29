@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Location from "../Location/Location";
 import VehicleEquipment from "../VehicleEquipment/VehicleEquipment";
 import VehicleType from "../VehicleType/VehicleType";
 
+import { fetchCampers } from "../../redux/campers/operations";
 import {
   resetCurrentPage,
   resetFilters,
   setFilters,
 } from "../../redux/campers/slice";
-import { fetchCampers } from "../../redux/campers/operations";
 
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import toast from "react-hot-toast";
@@ -19,7 +19,6 @@ import css from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-
   const { filters, currentPage } = useSelector((state) => state.campers);
 
   const limit = 4;
@@ -79,7 +78,6 @@ const Sidebar = () => {
         onTypeSelect={handleVehicleTypeChange}
         currentFilters={filters}
       />
-
       <div>
         <BtnWrap type="button" onClick={handleSearch}>
           Search

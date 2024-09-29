@@ -11,13 +11,10 @@ export const fetchCampers = createAsyncThunk(
 
       if (filters.location) params.append("location", filters.location);
       if (filters.vehicleType) params.append("form", filters.vehicleType);
-
-      // Додаємо фільтри, включаючи transmission
       if (filters.equipment.transmission) {
         params.append("transmission", filters.equipment.transmission);
       }
 
-      // Додаємо інші фільтри
       Object.entries(filters.equipment).forEach(([key, value]) => {
         if (key !== "transmission" && value) {
           params.append(key, "true");

@@ -1,15 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCampers, fetchCamperById } from "./operations";
 
-export const handlePending = (state) => {
-  state.isLoading = true;
-};
-
-export const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
 const initialState = {
   items: [],
   camper: {},
@@ -31,6 +22,15 @@ const initialState = {
   },
 };
 
+const handlePending = (state) => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 const campersSlice = createSlice({
   name: "campers",
   initialState,
@@ -42,17 +42,7 @@ const campersSlice = createSlice({
       state.currentPage = 1;
     },
     resetFilters(state) {
-      state.filters = {
-        location: "",
-        vehicleType: "",
-        equipment: {
-          AC: false,
-          transmission: "",
-          kitchen: false,
-          TV: false,
-          bathroom: false,
-        },
-      };
+      state.filters = initialState.filters;
     },
     setFilters(state, action) {
       const { location, vehicleType, equipment } = action.payload;
@@ -67,7 +57,6 @@ const campersSlice = createSlice({
         },
       };
     },
-
     addToFavorites(state, action) {
       const exists = state.favorites.some(
         (favorite) => favorite.id === action.payload.id
@@ -86,8 +75,8 @@ const campersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCampers.rejected, handleRejected)
       .addCase(fetchCampers.pending, handlePending)
+      .addCase(fetchCampers.rejected, handleRejected)
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -104,8 +93,8 @@ const campersSlice = createSlice({
 
         state.total = action.payload.total;
       })
-      .addCase(fetchCamperById.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)
+      .addCase(fetchCamperById.rejected, handleRejected)
       .addCase(fetchCamperById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -122,4 +111,5 @@ export const {
   resetFilters,
   resetCurrentPage,
 } = campersSlice.actions;
+
 export const campersReducer = campersSlice.reducer;
