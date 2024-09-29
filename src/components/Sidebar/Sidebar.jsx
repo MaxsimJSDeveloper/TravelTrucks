@@ -31,10 +31,16 @@ const Sidebar = () => {
     dispatch(resetCurrentPage());
 
     try {
-      await dispatch(fetchCampers(filter));
-      toast.success("Campers fetched successfully!");
+      const result = await dispatch(fetchCampers(filter)).unwrap();
+      if (result.length > 0) {
+        toast.success("Campers fetched successfully!");
+      }
     } catch (error) {
-      toast.error("Failed to fetch campers.");
+      if (error.status === 404) {
+        toast.error("No campers found. Please try different filters.");
+      } else {
+        toast.error("Failed to fetch campers.");
+      }
     }
   }, [dispatch, filters, currentPage, limit]);
 
