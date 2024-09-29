@@ -25,7 +25,7 @@ const Sidebar = () => {
   const previousFilters = useRef(filters);
 
   const handleSearch = useCallback(async () => {
-    // dispatch(resetFilters());
+    dispatch(resetFilters());
     dispatch(resetCurrentPage());
 
     const filter = { ...filters, page: currentPage || 1, limit };
