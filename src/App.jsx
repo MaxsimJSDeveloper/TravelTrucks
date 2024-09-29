@@ -37,7 +37,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
-        <Toaster />
+        <Toaster position="top-right" />
       </HelmetProvider>
     </>
   );

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../../redux/campers/slice";
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import EquipmentList from "../EquipmentList/EquipmentList";
+import CamperInfo from "../CamperInfo/CamperInfo";
 
 const Camper = ({ camper }) => {
   const {
@@ -62,22 +63,7 @@ const Camper = ({ camper }) => {
               </button>
             </div>
           </div>
-          <div className={css.addInfo}>
-            <div className={css.addInfoItem}>
-              <svg className={css.addInfoIcon}>
-                <use xlinkHref={`${sprite}#${"icon-star-active"}`} />
-              </svg>
-              <p>
-                {rating}({reviews.length} Reviews)
-              </p>
-            </div>
-            <div className={css.addInfoItem}>
-              <svg className={css.addInfoIcon}>
-                <use xlinkHref={`${sprite}#${"icon-map"}`} />
-              </svg>
-              <p>{location}</p>
-            </div>
-          </div>
+          <CamperInfo rating={rating} location={location} reviews={reviews} />
           <p className={css.description}>
             {truncateText(description, maxDescriptionLength)}
           </p>

@@ -1,5 +1,5 @@
 import CamperImg from "../CamperImg/CamperImg";
-import sprite from "../../img/symbol-defs.svg";
+import CamperInfo from "../CamperInfo/CamperInfo";
 
 import css from "./CamperDetails.module.css";
 
@@ -18,22 +18,7 @@ const CamperDetails = ({ camper }) => {
     <div className={css.cardContainer}>
       <div className={css.mainInfo}>
         <p>{name}</p>
-        <div className={css.addInfo}>
-          <div className={css.addInfoItem}>
-            <svg className={css.addInfoIcon}>
-              <use xlinkHref={`${sprite}#${"icon-star-active"}`} />
-            </svg>
-            <p className={css.reviews}>
-              {rating}({reviews.length} Reviews)
-            </p>
-          </div>
-          <div className={css.addInfoItem}>
-            <svg className={css.addInfoIcon}>
-              <use xlinkHref={`${sprite}#${"icon-map"}`} />
-            </svg>
-            <p>{location}</p>
-          </div>
-        </div>
+        <CamperInfo rating={rating} location={location} reviews={reviews} />
         <div className={css.stats}>
           <p>&euro;{price}.00</p>
         </div>

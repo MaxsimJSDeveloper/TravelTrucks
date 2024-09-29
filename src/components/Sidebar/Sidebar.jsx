@@ -33,7 +33,7 @@ const Sidebar = () => {
 
     try {
       const result = await dispatch(fetchCampers(filter)).unwrap();
-      if (result.length > 0) {
+      if (result) {
         toast.success("Campers fetched successfully!");
       }
     } catch (error) {
