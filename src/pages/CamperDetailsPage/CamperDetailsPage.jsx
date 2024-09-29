@@ -6,6 +6,7 @@ import { selectCamper } from "../../redux/campers/selectors";
 import Container from "../../shared/Container/Container";
 import CamperDetails from "../../components/CamperDetails/CamperDetails";
 import DetailsNavList from "../../components/DetailsNavList/DetailsNavList";
+import { Helmet } from "react-helmet-async";
 
 const CamperDetailsPage = () => {
   const { id } = useParams();
@@ -17,12 +18,18 @@ const CamperDetailsPage = () => {
   }, [dispatch]);
 
   return (
-    <main>
-      <Container>
-        <CamperDetails camper={camper} />
-        <DetailsNavList />
-      </Container>
-    </main>
+    <>
+      <Helmet>
+        <title>Camper Details</title>
+        <meta name="description" content={`Details of camper with ID: ${id}`} />
+      </Helmet>
+      <main>
+        <Container>
+          <CamperDetails camper={camper} />
+          <DetailsNavList />
+        </Container>
+      </main>
+    </>
   );
 };
 

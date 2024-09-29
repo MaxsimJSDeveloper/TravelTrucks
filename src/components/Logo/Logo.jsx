@@ -1,11 +1,15 @@
-import css from "./Logo.module.css";
+import { Link } from "react-router-dom";
+
 import sprite from "../../img/symbol-defs.svg";
+import css from "./Logo.module.css";
 
 const Logo = () => {
   return (
-    <svg className={css.logoIcon}>
-      <use xlinkHref={`${sprite}#${"icon-logo"}`} />
-    </svg>
+    <Link to="/" className={css.logoLink}>
+      <svg className={css.logoIcon}>
+        <use xlinkHref={`${sprite}#${"icon-logo"}`} />
+      </svg>
+    </Link>
   );
 };
 

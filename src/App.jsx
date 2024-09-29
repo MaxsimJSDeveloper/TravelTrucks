@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import Loader from "./components/Loader/Loader.jsx";
 import SharedLayout from "./shared/SharedLayout/SharedLayout.jsx";
 import { Toaster } from "react-hot-toast";
+import { HelmetProvider } from "react-helmet-async";
 
 const CamperFeatures = lazy(() =>
   import("./components/CamperFeatures/CamperFeatures.jsx")
@@ -22,20 +23,22 @@ const CampersCatalogPage = lazy(() =>
 function App() {
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route element={<SharedLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/catalog" element={<CampersCatalogPage />} />
-            <Route path="/catalog/:id" element={<CamperDetailsPage />}>
-              <Route path="features" element={<CamperFeatures />} />
-              <Route path="reviews" element={<CamperReviews />} />
+      <HelmetProvider>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route element={<SharedLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/catalog" element={<CampersCatalogPage />} />
+              <Route path="/catalog/:id" element={<CamperDetailsPage />}>
+                <Route path="features" element={<CamperFeatures />} />
+                <Route path="reviews" element={<CamperReviews />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-      <Toaster />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+        <Toaster />
+      </HelmetProvider>
     </>
   );
 }
