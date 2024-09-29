@@ -27,6 +27,7 @@ const Sidebar = () => {
 
   const handleSearch = useCallback(async () => {
     const filter = { ...filters, page: currentPage || 1, limit };
+    console.log(filter);
 
     dispatch(resetCurrentPage());
 
@@ -46,12 +47,10 @@ const Sidebar = () => {
 
   const updateFilters = useCallback(
     (key, value) => {
-      if (previousFilters.current[key] !== value) {
-        dispatch(resetFilters());
-      }
-      dispatch(setFilters({ [key]: value }));
+      const newFilters = { ...filters, [key]: value }; // Об'єднуємо нові фільтри з попередніми
+      dispatch(setFilters(newFilters)); // Оновлюємо фільтри
     },
-    [dispatch]
+    [dispatch, filters]
   );
 
   const handleLocationChange = useCallback(
