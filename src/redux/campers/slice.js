@@ -23,7 +23,7 @@ const initialState = {
     vehicleType: "",
     equipment: {
       AC: false,
-      transmission: "", // тут вам потрібно зберігати інформацію про автоматичний трансмісій
+      transmission: "",
       kitchen: false,
       TV: false,
       bathroom: false,
@@ -45,7 +45,13 @@ const campersSlice = createSlice({
       state.filters = {
         location: "",
         vehicleType: "",
-        equipment: {},
+        equipment: {
+          AC: false,
+          transmission: "",
+          kitchen: false,
+          TV: false,
+          bathroom: false,
+        },
       };
     },
     setFilters(state, action) {

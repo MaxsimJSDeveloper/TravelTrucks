@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EquipmentItem from "../EquipmentItem/EquipmentItem";
 import css from "./VehicleType.module.css";
 
-const VehicleType = ({ onTypeSelect }) => {
-  const [selectedType, setSelectedType] = useState("");
+const VehicleType = ({ onTypeSelect, currentFilters }) => {
+  const [selectedType, setSelectedType] = useState(
+    currentFilters.vehicleType || ""
+  );
+
+  useEffect(() => {
+    setSelectedType(currentFilters.vehicleType || "");
+  }, [currentFilters]);
 
   const handleTypeClick = (type) => {
     let transformedType;

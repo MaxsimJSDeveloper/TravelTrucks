@@ -26,10 +26,10 @@ const Sidebar = () => {
   const previousFilters = useRef(filters);
 
   const handleSearch = useCallback(async () => {
-    const filter = { ...filters, page: currentPage || 1, limit };
-    console.log(filter);
-
+    dispatch(resetFilters());
     dispatch(resetCurrentPage());
+
+    const filter = { ...filters, page: currentPage || 1, limit };
 
     try {
       const result = await dispatch(fetchCampers(filter)).unwrap();
@@ -47,8 +47,8 @@ const Sidebar = () => {
 
   const updateFilters = useCallback(
     (key, value) => {
-      const newFilters = { ...filters, [key]: value }; // Объединяем новые фильтры с предыдущими
-      dispatch(setFilters(newFilters)); // Обновляем фильтры
+      const newFilters = { ...filters, [key]: value };
+      dispatch(setFilters(newFilters));
     },
     [dispatch, filters]
   );
@@ -75,7 +75,11 @@ const Sidebar = () => {
         currentEquipment={filters.equipment}
         onUpdateFilters={updateFilters}
       />
-      <VehicleType onTypeSelect={handleVehicleTypeChange} />
+      <VehicleType
+        onTypeSelect={handleVehicleTypeChange}
+        currentFilters={filters}
+      />
+
       <div>
         <BtnWrap type="button" onClick={handleSearch}>
           Search
