@@ -47,8 +47,8 @@ const Sidebar = () => {
 
   const updateFilters = useCallback(
     (key, value) => {
-      const newFilters = { ...filters, [key]: value }; // Об'єднуємо нові фільтри з попередніми
-      dispatch(setFilters(newFilters)); // Оновлюємо фільтри
+      const newFilters = { ...filters, [key]: value }; // Объединяем новые фильтры с предыдущими
+      dispatch(setFilters(newFilters)); // Обновляем фильтры
     },
     [dispatch, filters]
   );
@@ -71,7 +71,10 @@ const Sidebar = () => {
     <div className={css.sidebarContainer}>
       <Location onLocationChange={handleLocationChange} />
       <p className={css.title}>Filters</p>
-      <VehicleEquipment />
+      <VehicleEquipment
+        currentEquipment={filters.equipment}
+        onUpdateFilters={updateFilters}
+      />
       <VehicleType onTypeSelect={handleVehicleTypeChange} />
       <div>
         <BtnWrap type="button" onClick={handleSearch}>

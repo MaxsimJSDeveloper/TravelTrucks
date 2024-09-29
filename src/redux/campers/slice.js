@@ -21,6 +21,13 @@ const initialState = {
   filters: {
     location: "",
     vehicleType: "",
+    equipment: {
+      AC: false,
+      transmission: "", // тут вам потрібно зберігати інформацію про автоматичний трансмісій
+      kitchen: false,
+      TV: false,
+      bathroom: false,
+    },
   },
 };
 
@@ -38,15 +45,20 @@ const campersSlice = createSlice({
       state.filters = {
         location: "",
         vehicleType: "",
+        equipment: {},
       };
     },
     setFilters(state, action) {
-      const { location, vehicleType, ...equipmentFilters } = action.payload;
+      const { location, vehicleType, equipment } = action.payload;
+
       state.filters = {
         ...state.filters,
         location,
         vehicleType,
-        ...equipmentFilters,
+        equipment: {
+          ...state.filters.equipment,
+          ...equipment,
+        },
       };
     },
 

@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EquipmentItem from "../EquipmentItem/EquipmentItem";
 import css from "./VehicleEquipment.module.css";
-import { useDispatch } from "react-redux";
-import { setFilters } from "../../redux/campers/slice";
 
-const VehicleEquipment = () => {
-  const dispatch = useDispatch();
-  const [selectedEquipment, setSelectedEquipment] = useState({});
+const VehicleEquipment = ({ currentEquipment, onUpdateFilters }) => {
+  const [selectedEquipment, setSelectedEquipment] = useState(currentEquipment);
+
+  useEffect(() => {
+    setSelectedEquipment(currentEquipment);
+  }, [currentEquipment]);
 
   const handleEquipmentClick = (equipment) => {
     const newSelected = {
       ...selectedEquipment,
-      [equipment]: !selectedEquipment[equipment],
+      [equipment]:
+        equipment === "transmission"
+          ? "automatic"
+          : !selectedEquipment[equipment],
     };
 
     setSelectedEquipment(newSelected);
-
-    dispatch(setFilters(newSelected));
+    onUpdateFilters("equipment", newSelected);
   };
 
   return (
