@@ -51,7 +51,9 @@ const Camper = ({ camper }) => {
         <div className={css.mainInfo}>
           <p>{name}</p>
           <div className={css.stats}>
-            <p>&euro;{price}.00</p>
+            <p>
+              <p>&euro;{price.toFixed(2)}</p>
+            </p>
             <button className={css.toggleBtn} onClick={handleFavoriteToggle}>
               <svg className={css.likeIcon}>
                 <use

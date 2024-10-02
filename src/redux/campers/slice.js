@@ -8,7 +8,7 @@ const initialState = {
   total: 0,
   isLoading: false,
   error: null,
-  favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+  favorites: [],
   filters: {
     location: "",
     vehicleType: "",
@@ -63,14 +63,12 @@ const campersSlice = createSlice({
       );
       if (!exists) {
         state.favorites.push(action.payload);
-        localStorage.setItem("favorites", JSON.stringify(state.favorites));
       }
     },
     removeFromFavorites(state, action) {
       state.favorites = state.favorites.filter(
         (favorite) => favorite.id !== action.payload.id
       );
-      localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
   },
   extraReducers: (builder) => {

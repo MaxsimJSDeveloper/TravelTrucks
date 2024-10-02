@@ -13,7 +13,7 @@ const Location = ({ onLocationChange }) => {
       <div className={css.locationContainer}>
         <p className={css.locationTitle}>Location</p>
         <Formik
-          initialValues={{ location: "Ukraine, Lviv" }}
+          initialValues={{ location: "" }}
           validationSchema={LocationSchema}
           onSubmit={(values) => {
             onLocationChange(values.location);
@@ -25,7 +25,7 @@ const Location = ({ onLocationChange }) => {
               <Field
                 type="text"
                 name="location"
-                placeholder="Location*"
+                placeholder="Ukraine, Lviv"
                 className={css.inputField}
                 onBlur={handleSubmit}
               />

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "react-hot-toast";
 
@@ -30,6 +30,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/catalog" element={<CampersCatalogPage />} />
             <Route path="/catalog/:id" element={<CamperDetailsPage />}>
+              <Route index element={<Navigate to="features" replace />} />
               <Route path="features" element={<CamperFeatures />} />
               <Route path="reviews" element={<CamperReviews />} />
             </Route>

@@ -10,7 +10,7 @@ import css from "./CamperDetails.module.css";
 const CamperDetails = ({ camper = {} }) => {
   const {
     name,
-    price,
+    price = 0,
     rating,
     location,
     description,
@@ -30,7 +30,7 @@ const CamperDetails = ({ camper = {} }) => {
             <p>{name}</p>
             <CamperInfo rating={rating} location={location} reviews={reviews} />
             <div className={css.stats}>
-              <p>&euro;{price}.00</p>
+              <p>&euro;{price.toFixed(2)}</p>
             </div>
           </div>
 

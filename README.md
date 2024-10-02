@@ -26,6 +26,7 @@ bookings.
 - React 18
 - React Router Dom
 - Redux Toolkit & React-Redux
+- Redux Persist
 - Formik
 - Axios
 - Yup
@@ -54,3 +55,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Author
+
+Holovko Maksym
