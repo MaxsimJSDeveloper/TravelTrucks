@@ -33,6 +33,7 @@ bookings.
 - React Hot Toast
 - React Helmet Async
 - React Loader Spinner
+- React Datepicker
 - Modern Normalize
 
 ### Dev Dependencies

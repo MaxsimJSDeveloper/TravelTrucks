@@ -1,13 +1,16 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { toast } from "react-hot-toast";
-
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import { BookingSchema } from "../../js/validation";
-
 import styles from "../../css/formsGeneralStyles.module.css";
 import css from "./BookingForm.module.css";
+import DatePicker from "react-datepicker";
+import { useState } from "react";
+import "react-datepicker/dist/react-datepicker.css"; // Важно не забыть стили
 
 const BookingForm = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <Formik
       initialValues={{ name: "", email: "", bookingDate: "", comment: "" }}
@@ -47,11 +50,19 @@ const BookingForm = () => {
           />
         </div>
 
-        <Field
-          type="date"
-          name="bookingDate"
-          placeholder="Booking date*"
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
           className={css.inputField}
+          placeholderText="Booking date*"
+          dateFormat="yyyy-MM-dd"
+          dayClassName={(date) => {
+            const day = date.getDay(); // Получаем день недели (0 - воскресенье, 1 - понедельник и т.д.)
+            return day === 0 || day === 6 ? "weekend" : "weekday"; // Выходные и будние дни
+          }}
+          renderDay={(day, date, selected, onClick) => (
+            <CustomDay day={day} selected={selected} onClick={onClick} />
+          )}
         />
         <div className={styles.wrap}>
           <ErrorMessage
