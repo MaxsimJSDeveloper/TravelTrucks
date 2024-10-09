@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import CamperImg from "../CamperImg/CamperImg";
 import CamperInfo from "../CamperInfo/CamperInfo";
@@ -42,7 +41,6 @@ const Camper = ({ camper }) => {
   };
 
   const equipmentProps = { transmission, engine, AC, kitchen };
-  const navigate = useNavigate();
 
   return (
     <div className={css.cardContainer}>
@@ -70,9 +68,7 @@ const Camper = ({ camper }) => {
           {truncateText(description, maxDescriptionLength)}
         </p>
         <EquipmentList {...equipmentProps} />
-        <BtnWrap type="button" onClick={() => navigate(`/catalog/:${id}`)}>
-          Show more
-        </BtnWrap>
+        <BtnWrap where={`/catalog/:${id}`}>Show more</BtnWrap>
       </div>
     </div>
   );

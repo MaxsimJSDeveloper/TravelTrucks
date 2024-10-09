@@ -29,6 +29,7 @@ const CampersCatalogPage = () => {
                 onClick={handleLoadMore}
                 disabled={isLoading}
                 className={css.loadMoreBtn}
+                isBtn={true}
               >
                 {isLoading ? "Loading..." : "Load More"}
               </BtnWrap>

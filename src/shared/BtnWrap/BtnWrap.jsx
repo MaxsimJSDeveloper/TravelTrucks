@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import css from "./BtnWrap.module.css";
 
 const BtnWrap = ({
@@ -6,8 +7,10 @@ const BtnWrap = ({
   children,
   disabled,
   className,
+  isBtn,
+  where,
 }) => {
-  return (
+  return isBtn ? (
     <button
       type={type}
       className={`${css.btnWrap} ${className}`}
@@ -16,6 +19,10 @@ const BtnWrap = ({
     >
       {children}
     </button>
+  ) : (
+    <Link className={css.btnWrap} to={where}>
+      {children}
+    </Link>
   );
 };
 

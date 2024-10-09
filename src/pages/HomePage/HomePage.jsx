@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
 
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import Container from "../../shared/Container/Container";
@@ -8,8 +7,6 @@ import HomePageContent from "../../components/HomePageContent/HomePageContent";
 import css from "./HomePage.module.css";
 
 const HomePage = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <Helmet>
@@ -20,9 +17,7 @@ const HomePage = () => {
         <Container>
           <div className={css.homePageContainer}>
             <HomePageContent />
-            <BtnWrap type="button" onClick={() => navigate("/catalog")}>
-              View Now
-            </BtnWrap>
+            <BtnWrap where={"/catalog"}>View Now</BtnWrap>
           </div>
         </Container>
       </div>
