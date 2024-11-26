@@ -13,6 +13,8 @@
   --button: #e44848;
   --button-hover: #d84343;
   --rating: #ffc531;
+  --main-border: 1px solid var(--gray-light);
+  --main-border-radius: 24px;
 }
 
 @font-face {
