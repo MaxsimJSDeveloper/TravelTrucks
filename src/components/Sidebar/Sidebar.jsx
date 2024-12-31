@@ -6,11 +6,7 @@ import VehicleEquipment from "../VehicleEquipment/VehicleEquipment";
 import VehicleType from "../VehicleType/VehicleType";
 
 import { fetchCampers } from "../../redux/campers/operations";
-import {
-  resetCurrentPage,
-  resetFilters,
-  setFilters,
-} from "../../redux/campers/slice";
+import { resetCurrentPage, setFilters } from "../../redux/campers/slice";
 
 import BtnWrap from "../../shared/BtnWrap/BtnWrap";
 import toast from "react-hot-toast";
@@ -25,7 +21,6 @@ const Sidebar = () => {
   const previousFilters = useRef(filters);
 
   const handleSearch = useCallback(async () => {
-    dispatch(resetFilters());
     dispatch(resetCurrentPage());
 
     const filter = { ...filters, page: currentPage || 1, limit };
@@ -79,7 +74,7 @@ const Sidebar = () => {
         currentFilters={filters}
       />
       <div>
-        <BtnWrap type="button" onClick={handleSearch}>
+        <BtnWrap type="button" onClick={handleSearch} isBtn={true}>
           Search
         </BtnWrap>
       </div>
